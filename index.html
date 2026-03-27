@@ -323,7 +323,40 @@
 </div>
 
 <header style="display:flex; align-items:center; justify-content:space-between; gap:15px; flex-wrap: wrap;"> <img src="mascota.png" style="width:120px; max-width: 40%;" alt="Mascota" /> <div style="text-align:center; flex:1; min-width: 200px;"> <h1 style="margin: 15px 0;">PORTAL SSOMA</h1> <p style="margin: 0; font-size: 0.9rem;">La seguridad es cultura</p> </div> <img src="sinaccidentes.png" style="width:150px; max-width: 40%;" alt="Sin Accidentes" /> </header>
+<header class="header">
+  <div class="logo">PORTAL SSOMA</div>
 
+  <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+
+  <nav id="menu" class="nav">
+
+    <div class="menu-item">
+      <button onclick="show('home')">Inicio</button>
+    </div>
+
+    <div class="menu-item">
+      <button class="toggle-sub">SSOMA ▾</button>
+      <div class="submenu">
+        <button onclick="show('politicas')">Políticas</button>
+        <button onclick="show('inducciones')">Inducciones</button>
+        <button onclick="show('capacitaciones')">Capacitaciones</button>
+        <button onclick="show('charlas')">Charlas</button>
+      </div>
+    </div>
+
+    <div class="menu-item">
+      <button class="toggle-sub">Recursos ▾</button>
+      <div class="submenu">
+        <button onclick="show('registros')">Contratistas</button>
+        <button onclick="window.location.href='https://sinbassoma.github.io/2/'">Accidentes</button>
+        <button onclick="window.location.href='https://sinbassoma.github.io/recicladoressst/'">Recicladores</button>
+        <button onclick="window.location.href='https://sinbassoma.github.io/Segregafacil/'">Segregar</button>
+        <button onclick="window.location.href='https://sinbassoma.github.io/Segregame/'">Segrega PRO</button>
+      </div>
+    </div>
+
+  </nav>
+</header>
 <!-- BOTÓN -->
 <button class="menu-btn" onclick="toggleSidebar()"> MENÚ☰</button>
 
@@ -488,6 +521,27 @@ function toggleSidebar() {
   document.getElementById("sidebar").classList.toggle("active");
   document.getElementById("overlay").classList.toggle("active");
 }
+</script>
+<script>
+function toggleMenu() {
+  document.getElementById("menu").classList.toggle("active");
+}
+
+function show(id) {
+  document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  document.getElementById("menu").classList.remove("active");
+}
+
+// móvil submenus
+
+document.querySelectorAll(".toggle-sub").forEach(btn => {
+  btn.addEventListener("click", function () {
+    if (window.innerWidth <= 768) {
+      this.parentElement.classList.toggle("active");
+    }
+  });
+});
 </script>
 </body>
 </html>
