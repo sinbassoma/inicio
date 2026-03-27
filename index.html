@@ -235,7 +235,69 @@
     width: 100%;
   }
 }
-    
+    /* botón menú */
+.menu-btn {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  background: #5C2D91;
+  color: white;
+  border: none;
+  padding: 12px 15px;
+  font-size: 20px;
+  border-radius: 10px;
+  z-index: 1001;
+  cursor: pointer;
+}
+
+/* sidebar */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: -260px;
+  width: 250px;
+  height: 100%;
+  background: #4b2e83;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: 0.3s;
+  z-index: 1002;
+}
+
+/* botones */
+.sidebar button {
+  background: #f7e734;
+  color: #4b2e83;
+  border: none;
+  padding: 12px;
+  border-radius: 10px;
+  font-weight: bold;
+  text-align: left;
+  cursor: pointer;
+}
+
+/* activo */
+.sidebar.active {
+  left: 0;
+}
+
+/* overlay oscuro */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.4);
+  display: none;
+  z-index: 1000;
+}
+
+.overlay.active {
+  display: block;
+}
   </style>
 
 </head>
@@ -261,20 +323,26 @@
 </div>
 
 <header style="display:flex; align-items:center; justify-content:space-between; gap:15px; flex-wrap: wrap;"> <img src="mascota.png" style="width:120px; max-width: 40%;" alt="Mascota" /> <div style="text-align:center; flex:1; min-width: 200px;"> <h1 style="margin: 15px 0;">PORTAL SSOMA</h1> <p style="margin: 0; font-size: 0.9rem;">La seguridad es cultura</p> </div> <img src="sinaccidentes.png" style="width:150px; max-width: 40%;" alt="Sin Accidentes" /> </header>
-<button class="menu-toggle" onclick="toggleMenu()">☰ Menú</button>
 
-<nav id="menu" class="menu">
+<!-- BOTÓN -->
+<button class="menu-btn" onclick="toggleSidebar()">☰</button>
+
+<!-- SIDEBAR -->
+<div id="sidebar" class="sidebar">
   <button onclick="show('home')">Inicio</button>
-  <button onclick="show('politicas')">Difusión de politicas</button>
+  <button onclick="show('politicas')">Políticas</button>
   <button onclick="show('inducciones')">Inducciones</button>
   <button onclick="show('capacitaciones')">Capacitaciones</button>
-  <button onclick="show('charlas')">Charlas 5 minutos</button>
-  <button onclick="window.location.href='https://sinbassoma.github.io/2/'">Difusión de Accidentes</button>
-  <button onclick="show('registros')">Formatos para contratistas</button>
-  <button onclick="window.location.href='https://sinbassoma.github.io/recicladoressst/'">Recomendaciones</button>
+  <button onclick="show('charlas')">Charlas</button>
+  <button onclick="window.location.href='https://sinbassoma.github.io/2/'">Accidentes</button>
+  <button onclick="show('registros')">Contratistas</button>
+  <button onclick="window.location.href='https://sinbassoma.github.io/recicladoressst/'">Recicladores</button>
   <button onclick="window.location.href='https://sinbassoma.github.io/Segregafacil/'">Segregar</button>
   <button onclick="window.location.href='https://sinbassoma.github.io/Segregame/'">Segrega PRO</button>
-</nav>
+</div>
+
+<!-- FONDO OSCURO -->
+<div id="overlay" class="overlay" onclick="toggleSidebar()"></div>
 
 <!-- INICIO -->
 <section id="home" class="section active">
@@ -417,8 +485,9 @@ function show(id){
 }
 </script>
 <script>
-function toggleMenu() {
-  document.getElementById("menu").classList.toggle("show");
+function toggleSidebar() {
+  document.getElementById("sidebar").classList.toggle("active");
+  document.getElementById("overlay").classList.toggle("active");
 }
 </script>
 </body>
