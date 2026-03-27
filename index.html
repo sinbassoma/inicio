@@ -181,6 +181,61 @@
     color: #5A1A9B;
     font-size: clamp(28px, 6vw, 60px);
     }
+.menu-toggle {
+  display: none;
+  background: #5C2D91;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 10px;
+  font-size: 18px;
+  margin: 15px auto;
+  cursor: pointer;
+}
+
+/* menú normal (PC) */
+.menu {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.menu button {
+  background:#f7e734;
+  color:#4b2e83;
+  padding:10px 15px;
+  border:none;
+  border-radius:10px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+/* 📱 celular */
+@media (max-width: 600px) {
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .menu {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    background: white;
+    padding: 15px;
+    border-radius: 15px;
+  }
+
+  .menu.show {
+    display: flex;
+  }
+
+  .menu button {
+    width: 100%;
+  }
+}
+    
   </style>
 
 </head>
@@ -206,7 +261,9 @@
 </div>
 
 <header style="display:flex; align-items:center; justify-content:space-between; gap:15px; flex-wrap: wrap;"> <img src="mascota.png" style="width:120px; max-width: 40%;" alt="Mascota" /> <div style="text-align:center; flex:1; min-width: 200px;"> <h1 style="margin: 15px 0;">PORTAL SSOMA</h1> <p style="margin: 0; font-size: 0.9rem;">La seguridad es cultura</p> </div> <img src="sinaccidentes.png" style="width:150px; max-width: 40%;" alt="Sin Accidentes" /> </header>
-<nav>
+<button class="menu-toggle" onclick="toggleMenu()">☰ Menú</button>
+
+<nav id="menu" class="menu">
   <button onclick="show('home')">Inicio</button>
   <button onclick="show('politicas')">Difusión de politicas</button>
   <button onclick="show('inducciones')">Inducciones</button>
@@ -214,8 +271,8 @@
   <button onclick="show('charlas')">Charlas 5 minutos</button>
   <button onclick="window.location.href='https://sinbassoma.github.io/2/'">Difusión de Accidentes</button>
   <button onclick="show('registros')">Formatos para contratistas</button>
-  <button onclick="window.location.href='https://sinbassoma.github.io/recicladoressst/'">Recomendaciones para recicladores</button>
-  <button onclick="window.location.href='https://sinbassoma.github.io/Segregafacil/'">Aprende a segregar</button>
+  <button onclick="window.location.href='https://sinbassoma.github.io/recicladoressst/'">Recomendaciones</button>
+  <button onclick="window.location.href='https://sinbassoma.github.io/Segregafacil/'">Segregar</button>
   <button onclick="window.location.href='https://sinbassoma.github.io/Segregame/'">Segrega PRO</button>
 </nav>
 
