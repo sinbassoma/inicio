@@ -377,6 +377,7 @@
 
 .menu-item {
   position:relative;
+  padding-bottom: 10px; /* 🔥 esto evita que se cierre */
 }
 
 .menu-item > button {
@@ -406,6 +407,7 @@
   min-width:200px;
   box-shadow:0 10px 25px rgba(0,0,0,0.15);
   animation: fadeIn 0.2s ease;
+  pointer-events: auto;
 }
 
 .submenu button {
