@@ -702,24 +702,61 @@ function toggleSidebar() {
 }
 </script>
 <script>
+function resetMenu() {
+  const menu = document.getElementById("menu");
+
+  // Cierra menú principal
+  menu.classList.remove("active");
+
+  // Cierra todos los submenús
+  menu.querySelectorAll(".active").forEach(el => {
+    el.classList.remove("active");
+  });
+}
+
 function toggleMenu() {
-  document.getElementById("menu").classList.toggle("active");
+  const menu = document.getElementById("menu");
+
+  if (menu.classList.contains("active")) {
+    resetMenu();
+  } else {
+    menu.classList.add("active");
+  }
 }
 
 function show(id) {
-  document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
+  // Cambia de sección
+  document.querySelectorAll('.section').forEach(sec => 
+    sec.classList.remove('active')
+  );
   document.getElementById(id).classList.add('active');
-  document.getElementById("menu").classList.remove("active");
+
+  // Resetea menú
+  resetMenu();
 }
 
 // móvil submenus
-
 document.querySelectorAll(".toggle-sub").forEach(btn => {
   btn.addEventListener("click", function () {
     if (window.innerWidth <= 768) {
       this.parentElement.classList.toggle("active");
     }
   });
+});
+
+// ✅ Cerrar al hacer clic fuera
+document.addEventListener("click", function(e) {
+  const menu = document.getElementById("menu");
+  const toggleBtn = document.querySelector(".menu-toggle"); // botón hamburguesa
+
+  // Si el menú está abierto y el click NO fue dentro del menú ni en el botón
+  if (
+    menu.classList.contains("active") &&
+    !menu.contains(e.target) &&
+    !toggleBtn.contains(e.target)
+  ) {
+    resetMenu();
+  }
 });
 </script>
 </body>
