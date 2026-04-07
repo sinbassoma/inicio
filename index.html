@@ -77,6 +77,15 @@
       visibility: hidden;
       pointer-events: none;
     }
+
+    /* Corrección del color de h1 y p */
+     #loading-screen h1,
+    #loading-screen p {
+      margin: 8px 0;
+      color: #ffffff !important; /* Fuerza blanco sin importar herencias */
+      text-align: center;
+      font-weight: 500;
+    }
     .netflix-loader {
       display: flex;
       flex-direction: column;
@@ -238,8 +247,6 @@
       box-shadow: 0 0 20px rgba(247, 231, 52, 0.5);
     }
 
-
-    
     @keyframes progress {
       0% { width: 0%; }
       100% { width: 100%; }
@@ -686,22 +693,16 @@
 
 <!-- PANTALLA DE CARGA -->
 <div id="loading-screen">
+  <img src="ba.png" alt="Seguridad SSOMA" class="loading-gif2" />
+  <div class="netflix-logo">PORTAL SSOMA</div>
+  <img src="inicio.png" alt="Seguridad SSOMA" class="loading-gif" />
   
-    <!-- GIF DE SEGURIDAD -->
-    <img src="ba.png" alt="Seguridad SSOMA" class="loading-gif2" />
-    <div class="netflix-logo">PORTAL SSOMA</div>
-    <img src="inicio.png" alt="Seguridad SSOMA" class="loading-gif" />
-    <h1 style="margin: 15px 0;">Te queremos seguro</h1>
-    <p>La seguridad es autocuidado y cultura</p>
-    <!-- Barra de progreso -->
-  <div class="netflix-loader">
-    <div class="loading-subtitle">Cargando experiencia segura</div>
-    <div class="progress-container">
-      <div class="progress-fill"></div>
-    </div>
-  </div>
-    <div class="progress-bar">
-      <div class="progress-fill"></div>
+  <h1>Te queremos seguro</h1>
+  <p>La seguridad es autocuidado y cultura</p>
+  
+  <!-- ÚNICA barra de progreso -->
+  <div class="progress-container">
+    <div class="progress-fill"></div>
   </div>
 </div>
 
