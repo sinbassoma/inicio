@@ -196,7 +196,29 @@
       0% { transform: rotate(0deg); }
       100% { transform: rotate(360deg); }
     }
-
+ .loading-subtitle {
+      color: rgba(255,255,255,0.85);
+      font-size: clamp(14px, 2.5vw, 18px);
+      font-weight: 300;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      text-align: center;
+      animation: fadeInOut 2.5s ease-in-out infinite;
+      margin-top: 10px;
+    }
+    @keyframes fadeInOut {
+      0%, 100% { opacity: 0.6; }
+      50% { opacity: 1; }
+    }
+    .progress-container {
+      width: 280px;
+      max-width: 80vw;
+      height: 4px;
+      background: rgba(255,255,255,0.15);
+      border-radius: 2px;
+      overflow: hidden;
+      margin-top: 20px;
+    }
     /* Barra de progreso */
     .progress-bar {
       width: 200px;
